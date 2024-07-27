@@ -3,6 +3,7 @@
  *
  *  Created on: Jun 14, 2020
  *      Author: brad
+ * Shaohai Li add NOT and XOR gates
  */
 
 #include "../../FourBitAdder/intern/LogicGates.h"
@@ -113,7 +114,7 @@ void OR::update()
 {
     if (m_usiIn1)
     {
-       m_usiOut = 1;
+        m_usiOut = 1;
     }
     else if (m_usiIn2)
     {
@@ -121,7 +122,7 @@ void OR::update()
     }
     else
     {
-    	m_usiOut = 0;
+        m_usiOut = 0;
     }
 }
 
@@ -131,4 +132,71 @@ std::string OR::repr()
     return "id: " + m_strID + "\n\t" + rp;
 }
 
+/**** NOT ****/
+/**
+ * Constructor for concrete class NOT.
+ */
+NOT::NOT(const unsigned short int id) : m_nand(id)
+{
+    m_strID = std::to_string(id) + "NOT";
+}
 
+/**
+ * Destructor for concrete class NOT.
+ */
+NOT::~NOT()
+{
+}
+
+void NOT::update()
+{
+    m_nand.set_in1(m_usiIn1);
+    m_nand.set_in2(m_usiIn1);
+    m_usiOut = m_nand.out();
+}
+
+std::string NOT::repr()
+{
+    std::string rp = AbstractGate::repr();
+    return "id: " + m_strID + "\n\t" + rp;
+}
+
+/**** XOR ****/
+/**
+ * Constructor for concrete class XOR.
+ */
+XOR::XOR(const unsigned short int id) : m_nand1(id), m_nand2(id), m_nand3(id), m_nand4(id)
+{
+    m_strID = std::to_string(id) + "XOR";
+}
+
+/**
+ * Destructor for concrete class XOR.
+ */
+
+XOR::~XOR()
+{
+}
+
+void XOR::update()
+{
+    m_nand1.set_in1(m_usiIn1);
+    m_nand1.set_in2(m_usiIn2);
+
+    m_nand2.set_in1(m_usiIn1);
+    m_nand2.set_in2(m_nand1.out());
+
+    m_nand3.set_in1(m_nand1.out());
+    m_nand3.set_in2(m_usiIn2);
+
+    m_nand4.set_in1(m_nand2.out());
+    m_nand4.set_in2(m_nand3.out());
+
+    m_usiOut = m_nand4.out();
+}
+
+std::string XOR::repr()
+{
+    std::string rp = AbstractGate::repr();
+    return "id: " + m_strID + "\n\t" + rp;
+}
