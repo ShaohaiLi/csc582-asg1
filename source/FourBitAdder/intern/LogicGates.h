@@ -4,7 +4,7 @@
  *  Created on: Jun 14, 2020
  *      Author: brad
  *
- * update by Shaohai Li and add a NOT gate clas
+ * update by Shaohai Li and add a NOT gate class and XOR gate class
  */
 
 #ifndef _LOGICGATES_H_
@@ -32,6 +32,9 @@ protected:
 class NAND: public AbstractGate
 {
 public:
+    /**
+     * Constructor for concrete class NAND.
+     */
     NAND(const unsigned short int);
     virtual ~NAND();
 
@@ -45,6 +48,9 @@ protected:
 class OR: public AbstractGate
 {
 public:
+    /**
+     * Constructor for concrete class OR.
+     */
     OR(const unsigned short int);
     virtual ~OR();
 
@@ -55,7 +61,6 @@ protected:
     virtual std::string repr();
 };
 
-// Add the NOT gate class
 class NOT: public AbstractGate
 {
 public:
@@ -73,16 +78,17 @@ protected:
     virtual std::string repr();
 };
 
-// You might also want to add an XOR gate for the half adder
 class XOR: public AbstractGate
 {
 public:
+    /**
+     * Constructor for concrete class XOR.
+     */
     XOR(const unsigned short int);
     virtual ~XOR();
 
 protected:
     std::string m_strID;
-    // You'll need to implement XOR using the other gates
     NAND m_nand1, m_nand2, m_nand3, m_nand4;
 
     virtual void update();
@@ -90,5 +96,3 @@ protected:
 };
 
 #endif /* _LOGICGATES_H_ */
-
-
