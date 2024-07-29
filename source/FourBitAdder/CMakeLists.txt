@@ -1,4 +1,3 @@
-
 # List of header files
 set(INC
     FourBitAdder.h
@@ -17,6 +16,5 @@ add_library(FourBitAdder $ {INC} $ {SRC})
 
 # Specify include directories for this target
 target_include_directories(FourBitAdder PUBLIC $ {CMAKE_CURRENT_SOURCE_DIR})
-
 
 add_subdirectory(intern)
