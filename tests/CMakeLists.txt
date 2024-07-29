@@ -9,7 +9,6 @@ include_directories($ {GTEST_INCLUDE_DIRS})
 include_directories($ {CMAKE_SOURCE_DIR}/source/FourBitAdder)
 include_directories($ {CMAKE_SOURCE_DIR}/source/FourBitAdder/intern)
 
-# Add all test files
 set(TEST_SOURCES
     gtests/GTestLogicGates.cpp
     gtests/GTestHalfAdder.cpp
@@ -17,24 +16,16 @@ set(TEST_SOURCES
     gtests/GTestFourBitAdder.cpp
    )
 
-add_subdirectory(gtests)
+add_executable(run_all_tests $ {TEST_SOURCES})
 
-# Create test executable
-add_executable(run_all_tests
-               gtests/GTestLogicGates.cpp
-               gtests/GTestHalfAdder.cpp
-               gtests/GTestFullAdder.cpp
-               gtests/GTestFourBitAdder.cpp
-              )
-
-# Link the test executable with Google Test and your project libraries
-target_link_libraries(run_tests
+target_link_libraries(run_all_tests
                       GTest::GTest
                       GTest::Main
-                      proj1_FourBitAdder
+                      FourBitAdder
+                      pthread
                      )
 
-# Add tests to be run by CTest
-add_test(NAME AllTests COMMAND run_tests)
+add_test(NAME AllTests COMMAND run_all_tests)
 
-
+# Remove this line if you don't have a separate CMakeLists.txt in the gtests directory
+# add_subdirectory(gtests)
