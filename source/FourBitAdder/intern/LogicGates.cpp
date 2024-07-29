@@ -6,7 +6,7 @@
  * Shaohai Li add NOT and XOR gates
  */
 
-#include "../../FourBitAdder/intern/LogicGates.h"c
+#include "../../FourBitAdder/intern/LogicGates.h"
 #include <string>
 
 /**** AND ****/
