@@ -28,8 +28,7 @@ set_target_properties(FourBitAdderLib PROPERTIES
                       CXX_STANDARD_REQUIRED ON
                      )
 
-target_include_directories(FourBitAdderLib PUBLIC
-                           $ {CMAKE_CURRENT_SOURCE_DIR}
-                           $ {CMAKE_CURRENT_SOURCE_DIR}/FourBitAdder
-                           $ {CMAKE_CURRENT_SOURCE_DIR}/FourBitAdder/intern
-                          )
+target_include_directories(FourBitAdder PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/intern
+)
