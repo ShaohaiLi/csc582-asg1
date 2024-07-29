@@ -6,42 +6,23 @@
  * Shaohai Li add NOT and XOR gates
  */
 
-#include "../../FourBitAdder/intern/LogicGates.h"
+#include "../../FourBitAdder/intern/LogicGates.h"c
+#include <string>
 
 /**** AND ****/
 
-/**
- * Constructor for concrete class AND.
- */
 AND::AND(const unsigned short int id)
 {
     m_strID = std::to_string(id) + "AND";
 }
 
-/**
- * Destructor for concrete class AND.
- */
 AND::~AND()
 {
 }
 
 void AND::update()
 {
-    if (m_usiIn1)
-    {
-        if (m_usiIn2)
-        {
-            m_usiOut = 1;
-        }
-        else
-        {
-            m_usiOut = 0;
-        }
-    }
-    else
-    {
-        m_usiOut = 0;
-    }
+    m_usiOut = m_usiIn1 && m_usiIn2;
 }
 
 std::string AND::repr()
@@ -50,41 +31,20 @@ std::string AND::repr()
     return "id: " + m_strID + "\n\t" + rp;
 }
 
-
 /**** NAND ****/
 
-/**
- * Constructor for concrete class NAND.
- */
 NAND::NAND(const unsigned short int id)
 {
     m_strID = std::to_string(id) + "NAND";
 }
 
-/**
- * Destructor for concrete class NAND.
- */
 NAND::~NAND()
 {
 }
 
 void NAND::update()
 {
-    if (m_usiIn1)
-    {
-        if (m_usiIn2)
-        {
-            m_usiOut = 0;
-        }
-        else
-        {
-            m_usiOut = 1;
-        }
-    }
-    else
-    {
-        m_usiOut = 1;
-    }
+    m_usiOut = !(m_usiIn1 && m_usiIn2);
 }
 
 std::string NAND::repr()
@@ -95,35 +55,18 @@ std::string NAND::repr()
 
 /**** OR ****/
 
-/**
- * Constructor for concrete class OR.
- */
 OR::OR(const unsigned short int id)
 {
     m_strID = std::to_string(id) + "OR";
 }
 
-/**
- * Destructor for concrete class OR.
- */
 OR::~OR()
 {
 }
 
 void OR::update()
 {
-    if (m_usiIn1)
-    {
-        m_usiOut = 1;
-    }
-    else if (m_usiIn2)
-    {
-        m_usiOut = 1;
-    }
-    else
-    {
-        m_usiOut = 0;
-    }
+    m_usiOut = m_usiIn1 || m_usiIn2;
 }
 
 std::string OR::repr()
@@ -133,17 +76,14 @@ std::string OR::repr()
 }
 
 /**** NOT ****/
-/**
- * Constructor for concrete class NOT.
- */
+
 NOT::NOT(const unsigned short int id) : m_nand(id)
 {
     m_strID = std::to_string(id) + "NOT";
+    m_usiIn1 = 0;
+    update();
 }
 
-/**
- * Destructor for concrete class NOT.
- */
 NOT::~NOT()
 {
 }
@@ -162,17 +102,11 @@ std::string NOT::repr()
 }
 
 /**** XOR ****/
-/**
- * Constructor for concrete class XOR.
- */
+
 XOR::XOR(const unsigned short int id) : m_nand1(id), m_nand2(id), m_nand3(id), m_nand4(id)
 {
     m_strID = std::to_string(id) + "XOR";
 }
-
-/**
- * Destructor for concrete class XOR.
- */
 
 XOR::~XOR()
 {
