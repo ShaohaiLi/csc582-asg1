@@ -70,8 +70,3 @@ TEST_F(FullAdderTest, AllCombinations) {
                 << "Failure for inputs: " << inputs[i][0] << ", " << inputs[i][1] << ", " << inputs[i][2];
     }
 }
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}
