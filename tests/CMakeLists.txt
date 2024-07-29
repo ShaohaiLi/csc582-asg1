@@ -16,7 +16,7 @@ set(TEST_SOURCES
     gtests/GTestFourBitAdder.cpp
    )
 
-add_executable(run_all_tests $ {TEST_SOURCES})
+add_executable(run_all_tests ${TEST_SOURCES})
 
 target_link_libraries(run_all_tests
                       GTest::GTest
