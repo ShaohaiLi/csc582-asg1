@@ -1,4 +1,3 @@
-
 #include <gtest/gtest.h>
 #include "../../source/FourBitAdder/FourBitAdder.h"
 
@@ -41,9 +40,4 @@ TEST_F(HalfAdderTest, MultipleInputs) {
         EXPECT_EQ(halfAdder.get_sum(), expected_sums[i]) << "Failure for inputs: " << inputs[i][0] << ", " << inputs[i][1];
         EXPECT_EQ(halfAdder.get_carry(), expected_carries[i]) << "Failure for inputs: " << inputs[i][0] << ", " << inputs[i][1];
     }
-}
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
 }
