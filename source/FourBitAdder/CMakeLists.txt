@@ -6,7 +6,7 @@ set(INC
     intern/AbstractGate.h
    )
 
-# List of source filesaC
+# List of source files
 set(SRC
     intern/FourBitAdder.cpp
     intern/LogicGates.cpp
@@ -14,5 +14,9 @@ set(SRC
    )
 
 add_library(FourBitAdder $ {INC} $ {SRC})
+
+# Specify include directories for this target
+target_include_directories(FourBitAdder PUBLIC $ {CMAKE_CURRENT_SOURCE_DIR})
+
 
 add_subdirectory(intern)
