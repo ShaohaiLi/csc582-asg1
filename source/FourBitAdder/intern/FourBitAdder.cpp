@@ -46,16 +46,15 @@ FourBitAdder::FourBitAdder() : m_sum(0), m_carry(0) {}
 FourBitAdder::~FourBitAdder() {}
 
 void FourBitAdder::set_inputs(unsigned short int a, unsigned short int b) {
-    FullAdder fa[4];
     unsigned short int carry = 0;
     m_sum = 0;
 
     for (int i = 0; i < 4; i++) {
         unsigned short int bit_a = (a >> i) & 1;
         unsigned short int bit_b = (b >> i) & 1;
-        fa[i].set_inputs(bit_a, bit_b, carry);
-        m_sum |= (fa[i].get_sum() << i);
-        carry = fa[i].get_carry();
+        m_fullAdders[i].set_inputs(bit_a, bit_b, carry);
+        m_sum |= (m_fullAdders[i].get_sum() << i);
+        carry = m_fullAdders[i].get_carry();
     }
 
     m_carry = carry;
