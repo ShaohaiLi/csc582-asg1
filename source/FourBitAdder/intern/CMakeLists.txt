@@ -12,6 +12,10 @@ set(INC
 
 add_library(proj1_FourBitAdder SHARED "${SRC}" "${INC}")
 
+# Specify include directories for this target
+target_include_directories(proj1_FourBitAdder PUBLIC $ {CMAKE_CURRENT_SOURCE_DIR})
+
+
 # Set properties for the target (optional)
 set_target_properties(proj1_FourBitAdder PROPERTIES
                       VERSION 1.0.0
