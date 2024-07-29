@@ -4,9 +4,9 @@ add_subdirectory(FourBitAdder)
 
 # Include directories
 include_directories(
-    $ {CMAKE_CURRENT_SOURCE_DIR}
-    $ {CMAKE_CURRENT_SOURCE_DIR}/FourBitAdder
-    $ {CMAKE_CURRENT_SOURCE_DIR}/FourBitAdder/intern
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/FourBitAdder
+    ${CMAKE_CURRENT_SOURCE_DIR}/FourBitAdder/intern
 )
 
 # Define the source files
@@ -17,18 +17,19 @@ set(SOURCE_FILES
     FourBitAdder/intern/LogicGates.cpp
     FourBitAdder/intern/AbstractGate.h
     FourBitAdder/intern/AbstractGate.cpp
-   )
+)
 
 # Create the library
-add_library(FourBitAdderLib $ {SOURCE_FILES})
+add_library(FourBitAdderLib ${SOURCE_FILES})
 
 # Set properties for the target
 set_target_properties(FourBitAdderLib PROPERTIES
-                      CXX_STANDARD 14
-                      CXX_STANDARD_REQUIRED ON
-                     )
+    CXX_STANDARD 14
+    CXX_STANDARD_REQUIRED ON
+)
 
-target_include_directories(FourBitAdder PUBLIC
+target_include_directories(FourBitAdderLib PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/intern
+    ${CMAKE_CURRENT_SOURCE_DIR}/FourBitAdder
+    ${CMAKE_CURRENT_SOURCE_DIR}/FourBitAdder/intern
 )
